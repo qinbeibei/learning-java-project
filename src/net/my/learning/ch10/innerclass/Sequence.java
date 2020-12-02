@@ -37,10 +37,18 @@ public class Sequence {
 
 		}
 
+		public Sequence getOuterSeq() {
+			return Sequence.this;
+		}
+
 	}
 
 	public Selector getSelector() {
 		return new SequenceSelector();
+	}
+
+	public void f() {
+		System.out.println("test f()");
 	}
 
 	public static void main(String[] args) {
@@ -54,6 +62,12 @@ public class Sequence {
 			System.out.println(sel.current() + "");
 			sel.next();
 		}
+
+		///////// 练习4/////////
+		System.out.println();
+		Sequence seq2 = new Sequence(1);
+		SequenceSelector sel2 = (SequenceSelector) seq2.getSelector();
+		sel2.getOuterSeq().f();
 
 	}
 
